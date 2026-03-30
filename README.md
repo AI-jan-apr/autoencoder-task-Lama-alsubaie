@@ -1,35 +1,43 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/jYmqdKSO)
-# 📌 Autoencoder with MNIST Dataset
+# Autoencoder with MNIST Dataset
 
-This project demonstrates how to build, train, and use an **autoencoder** for the **MNIST handwritten digit dataset**. It includes visualization of digits, dimensionality reduction, and an image retrieval based on **cosine similarity**.
+## Project Overview
+This project demonstrates how to build and train an autoencoder using the MNIST handwritten digit dataset.  
+The model learns to compress images into a latent representation and reconstruct them.  
+The encoded features are also used for visualization and image retrieval.
 
----
+## Dataset
+- Dataset: MNIST (mnist_784)
+- Total images: 70,000
+- Image size: 28 × 28 pixels
+- Each image is flattened into 784 features.
 
-## 🚀 Project Overview
+## Model Architecture
+The autoencoder consists of two parts:
 
-1. **Data Loading**:
+**Encoder**
+- Input: 784 features
+- Dense layers compress the image into a smaller latent representation.
 
-   * The MNIST dataset (`mnist_784`) is fetched using `fetch_openml`.
-   * It contains 70,000 grayscale images of handwritten digits (0–9).
-   * Each image is represented as a **28×28** pixel grid (flattened to 784 features).
+**Decoder**
+- Reconstructs the original image from the latent space.
 
-2. **Autoencoder Architecture**:
+## Training
+- Loss Function: Mean Squared Error (MSE)
+- Optimizer: Adam
+- The model is trained to reconstruct the input images.
 
-   * **Encoder**: Compresses 784-dimensional input into an n-dimensional latent representation.
-   * **Decoder**: Reconstructs the original 784-dimensional image from the latent space.
-   * **Loss Function**
-   * **Optimizer**
+## Visualization
+The encoded features are reduced to 2 dimensions using PCA for visualization of the latent space.
 
-3. **Training**:
+## Image Retrieval
+A query image is encoded using the encoder.  
+Cosine similarity is then used to find the most similar images from the training set.
 
-   * The autoencoder is trained to reconstruct the input images.
+## Results
+- Training and validation loss decrease steadily.
+- The model successfully reconstructs digit images.
+- Image retrieval returns visually similar digits.
 
-4. **Dimensionality Reduction & Visualization**:
-
-   * Encoded representations of test images are further reduced to 2D.
-
-5. **Image Retrieval**:
-
-   * A sample image is encoded into the latent space using the encoder only.
-   * Cosine similarity is used to compare it against the training set.
-   * The top-5 most similar images are retrieved and displayed.
+## Conclusion
+The autoencoder effectively learns compressed representations of handwritten digits.  
+These representations can be used for reconstruction, visualization, and similarity-based image retrieval.
